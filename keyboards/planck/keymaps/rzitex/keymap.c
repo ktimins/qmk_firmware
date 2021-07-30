@@ -25,6 +25,7 @@
 #define RZ_EMU    LCTL(KC_GRV)
 #define RZ_TASK   LCTL(LSFT(KC_ESC))
 #define RZ_FLUX   LALT(KC_END)
+#define RZ_MMTE   LCTL(LSFT(KC_M))
 
 extern keymap_config_t keymap_config;
 
@@ -64,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
          KC_BSPC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
          KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_SFTENT,
-         KC_LEAD, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_RCTL, POK3R,   KC_RGHT
+         KC_LEAD, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_RCTL, POK3R,   KC_RGHT
          ),
 
    /* Colemak
@@ -82,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          KC_TAB , KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,   KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
          KC_BSPC, KC_A,    KC_R,    KC_S,    KC_T,    KC_D,   KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
          KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_SFTENT,
-         KC_LEAD, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC, KC_SPC,  RAISE,   KC_LEFT, KC_RCTL, POK3R,   KC_RGHT
+         KC_LEAD, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC, KC_SPC,  RAISE,   KC_LEFT, KC_RCTL, POK3R,   KC_RGHT
          ),
 
    /* NumPad
@@ -145,16 +146,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------+------+------+------+------+------+------|
     * | APP  |      | MUTE | VOLD | VOLU |      | Left | Down |  Up  | Right|      |      |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |      | CUT  | COPY | PASTE|      |      | End  | End  |      |      |      |      |
+    * | SHFT |      | CUT  | COPY | PASTE|      | End  | End  |      |      |      |      |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |LEADER|      |      |      |      |   CONEMU    |      |      |      |      |      |
+    * |LEADER| Ctrl | GUI  | Alt  |      |   CONEMU    |      |      |      |      |      |
     * `-----------------------------------------------------------------------------------'
     */
    [_POK3R] = LAYOUT_planck_grid(
-         RZ_TASK, DM_REC1, DM_PLY1, DM_REC2,  DM_PLY2, DM_RSTP, KC_CALC, KC_PGDN, KC_HOME, KC_PGUP, XXXXXXX, XXXXXXX,
+         RZ_TASK, DM_REC1, DM_PLY1, DM_REC2, DM_PLY2,  DM_RSTP, KC_CALC, KC_PGDN, KC_HOME, KC_PGUP, XXXXXXX, XXXXXXX,
          KC_APP , _______, KC_MUTE, KC_VOLD, KC_VOLU,  _______, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______, _______,
-         _______, KC_CUT , KC_COPY, KC_PASTE, _______, _______, KC_END , KC_END , _______, _______, _______, _______,
-         KC_LEAD, _______, _______, _______,  _______, RZ_EMU,  RZ_EMU,  _______, _______, _______, _______, _______
+         KC_LSFT, _______, KC_CUT , KC_COPY, KC_PASTE, _______, KC_END , KC_END , _______, _______, _______, _______,
+         KC_LEAD, KC_LCTL, KC_LGUI, KC_LALT, _______,  RZ_EMU,  RZ_EMU,  _______, _______, _______, _______, _______
          ),
 
    /* Adjust (Lower + Raise)
@@ -207,12 +208,20 @@ void matrix_scan_user(void) {
          SEND_STRING(SS_LCTRL("w"));
          did_leader_succeed = true;
       }
+      SEQ_ONE_KEY(KC_M) {
+         SEND_STRING(SS_DOWN(X_LCTRL) SS_DOWN(X_LSFT) SS_TAP(X_M) SS_UP(X_LSFT) SS_UP(X_LCTRL));
+         did_leader_succeed = true;
+      }
       SEQ_ONE_KEY(KC_LSFT) {
          SEND_STRING("(");
          did_leader_succeed = true;
       }
       SEQ_ONE_KEY(KC_SFTENT) {
          SEND_STRING(")");
+         did_leader_succeed = true;
+      }
+      SEQ_ONE_KEY(KC_BSPC) {
+         SEND_STRING(SS_DOWN(X_LGUI) SS_DOWN(X_LSFT) SS_TAP(X_BSPC) SS_UP(X_LSFT) SS_UP(X_LGUI));
          did_leader_succeed = true;
       }
       SEQ_TWO_KEYS(KC_LSFT, KC_SFTENT) {
@@ -233,10 +242,6 @@ void matrix_scan_user(void) {
       }
       SEQ_TWO_KEYS(KC_Q, KC_Q) {
          SEND_STRING(SS_DOWN(X_LALT) SS_TAP(X_F4) SS_UP(X_LALT));
-         did_leader_succeed = true;
-      }
-      SEQ_ONE_KEY(KC_BSPC) {
-         SEND_STRING(SS_DOWN(X_LGUI) SS_DOWN(X_LSFT) SS_TAP(X_BSPC) SS_UP(X_LSFT) SS_UP(X_LGUI));
          did_leader_succeed = true;
       }
       leader_end();
