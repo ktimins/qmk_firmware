@@ -25,7 +25,7 @@
 #define RZ_EMU    LCTL(KC_GRV)
 #define RZ_TASK   LCTL(LSFT(KC_ESC))
 #define RZ_FLUX   LALT(KC_END)
-#define RZ_MMTE   LCTL(LSFT(KC_M))
+#define RZ_MUTE   LCTL(LSFT(KC_F13))  // Toggle global mute
 
 extern keymap_config_t keymap_config;
 
@@ -142,25 +142,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
    /* POK3R
     * ,-----------------------------------------------------------------------------------.
-    * | TASK |RcMcr1|RcMcr2|PlMcr1|PlMcr2|EndMcr| Calc | PGDN | Home | PGUP |      |      |
+    * | TASK | Stop | Play | Prev | Next |      | Calc | PGDN | Home | PGUP |      |      |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
     * | APP  |      | MUTE | VOLD | VOLU |      | Left | Down |  Up  | Right|      |      |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
     * | SHFT |      | CUT  | COPY | PASTE|      | End  | End  |      |      |      |      |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |LEADER| Ctrl | GUI  | Alt  |      |   CONEMU    |      |      |      |      |      |
+    * |LEADER| Ctrl | GUI  | Alt  |      |   CONEMU    |RZMUTE|      |      |      |      |
     * `-----------------------------------------------------------------------------------'
     */
    [_POK3R] = LAYOUT_planck_grid(
-         RZ_TASK, DM_REC1, DM_PLY1, DM_REC2, DM_PLY2,  DM_RSTP, KC_CALC, KC_PGDN, KC_HOME, KC_PGUP, XXXXXXX, XXXXXXX,
+         RZ_TASK, KC_MSTP, KC_MPLY, KC_MPRV, KC_MPRV,  _______, KC_CALC, KC_PGDN, KC_HOME, KC_PGUP, XXXXXXX, XXXXXXX,
          KC_APP , _______, KC_MUTE, KC_VOLD, KC_VOLU,  _______, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______, _______,
          KC_LSFT, _______, KC_CUT , KC_COPY, KC_PASTE, _______, KC_END , KC_END , _______, _______, _______, _______,
-         KC_LEAD, KC_LCTL, KC_LGUI, KC_LALT, _______,  RZ_EMU,  RZ_EMU,  _______, _______, _______, _______, _______
+         KC_LEAD, KC_LCTL, KC_LGUI, KC_LALT, _______,  RZ_EMU,  RZ_EMU,  RZ_MUTE, _______, _______, _______, _______
          ),
 
    /* Adjust (Lower + Raise)
     * ,-----------------------------------------------------------------------------------.
-    * |      | Reset|      |      |      |      |      |      |      | Pause| Print|  Del |
+    * |      | Reset|      |      |      |      |      |      | Pause|RZMUTE| Print|  Del |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
     * | CAPS |      |      |Aud on|Audoff|      |      |Qwerty|Colemk|NUMPAD|Insert|      |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -170,7 +170,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * `-----------------------------------------------------------------------------------'
     */
    [_ADJUST] = LAYOUT_planck_grid(
-         _______, RESET,   _______, _______, _______, _______, _______, _______, _______, KC_PAUS, KC_PSCR, KC_DEL ,
+         _______, RESET,   _______, _______, _______, _______, _______, _______, KC_PAUS, RZ_MUTE, KC_PSCR, KC_DEL ,
          KC_CAPS, CK_ON,   CK_OFF,  AU_ON,   AU_OFF,  _______, _______, QWERTY,  COLEMAK, NUMPAD,  KC_INS,  _______,
          _______, CK_TOGG, CK_UP,   CK_DOWN, CK_RST,  _______, _______, AG_NORM, AG_SWAP, _______, _______, _______,
          KC_LEAD, _______, _______, _______, _______, RZ_EMU , RZ_EMU , _______, _______, _______, _______, _______

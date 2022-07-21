@@ -11,7 +11,7 @@ OPT_DEFS                   += -DINTERRUPT_CONTROL_ENDPOINT
 #   change to "no" to disable the options, or define them in the Makefile in
 #   the appropriate keymap folder that will get included automatically
 #
-BOOTMAGIC_ENABLE           = no     # Virtual DIP switch configuration(+1000)
+BOOTMAGIC_ENABLE           = lite   # Virtual DIP switch configuration(+1000)
 ## (Note that for BOOTMAGIC on Teensy LC you have to use a custom .ld script.)
 MOUSEKEY_ENABLE            = no     # Mouse keys(+4700)
 EXTRAKEY_ENABLE            = yes    # Audio control and System control(+450)
@@ -29,6 +29,7 @@ LEADER_ENABLE              = yes    # Enable Leader Key (Like in VIM/VI)
 DYNAMIC_MACRO_ENABLE       = no     # Enable Dynamic, at time, macros
 #DYNAMIC_MACRO_SIZE         = 64
 #DYNAMIC_MACRO_NO_NESTING   = yes
+VIA_ENABLE						= no 		# Enable VIA
                                         
 
 # Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
