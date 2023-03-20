@@ -11,7 +11,7 @@
                                   SONG(COLEMAK_SOUND), \
                                   SONG(GUITAR_SOUND) \
                                 }
-    
+
     // Clicky sounds to simulate clicky switches
     #define AUDIO_CLICKY
 #endif
@@ -28,7 +28,7 @@
 /* enable basic MIDI features:
    - MIDI notes can be sent when in Music mode is on
 */
-                                
+
 #define MIDI_BASIC
 
 /* enable advanced MIDI features:
@@ -43,9 +43,5 @@
 //#define MIDI_TONE_KEYCODE_OCTAVES 2
 
 //#define BACKLIGHT_LEVELS 3
-
-// Leader Key settings
-#define LEADER_PER_KEY_TIMEOUT
-#define LEADER_TIMEOUT 540
 
 #endif

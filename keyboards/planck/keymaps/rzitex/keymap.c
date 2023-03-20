@@ -19,6 +19,7 @@
 #include QMK_KEYBOARD_H
 #include "rzitex.h"
 
+// Custom keys
 #define RZ_CAD    LALT(LCTL(KC_DEL))
 #define RZ_LOCK   LGUI(LSFT(KC_Q))
 #define RZ_CTLC   LCTL(KC_C)
@@ -58,14 +59,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------+------+------+------+------+------+------|
     * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |LEADER| Ctrl | GUI  | Alt  |Lower |    Space    |Raise | Left | RCTL |Pok3r |Right |
+    * |      | Ctrl | GUI  | Alt  |Lower |    Space    |Raise | Left | RCTL |Pok3r |Right |
     * `-----------------------------------------------------------------------------------'
     */
    [_QWERTY] = LAYOUT_planck_grid(
          KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
          KC_BSPC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_SFTENT,
-         KC_LEAD, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_RCTL, POK3R,   KC_RGHT
+         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SC_SENT,
+         _______, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_RCTL, POK3R,   KC_RGHT
          ),
 
    /* Colemak
@@ -76,14 +77,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------+------+------+------+------+------+------|
     * | Shift|   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |Enter |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |LEADER| Ctrl | GUI  | Alt  |Lower |    Space    |Raise | Left | RCTL |Pok3r |Right |
+    * |      | Ctrl | GUI  | Alt  |Lower |    Space    |Raise | Left | RCTL |Pok3r |Right |
     * `-----------------------------------------------------------------------------------'
     */
    [_COLEMAK] = LAYOUT_planck_grid(
          KC_TAB , KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,   KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
          KC_BSPC, KC_A,    KC_R,    KC_S,    KC_T,    KC_D,   KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
-         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_SFTENT,
-         KC_LEAD, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC, KC_SPC,  RAISE,   KC_LEFT, KC_RCTL, POK3R,   KC_RGHT
+         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,   KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SC_SENT,
+         _______, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC, KC_SPC,  RAISE,   KC_LEFT, KC_RCTL, POK3R,   KC_RGHT
          ),
 
    /* NumPad
@@ -98,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * `-----------------------------------------------------------------------------------'
     */
    [_NUMPAD] = LAYOUT_planck_grid(
-         _______, _______, _______, _______, _______, _______, KC_NLCK, KC_KP_7, KC_KP_8, KC_KP_9, KC_PSLS, _______,
+         _______, _______, _______, _______, _______, _______, KC_NUM,  KC_KP_7, KC_KP_8, KC_KP_9, KC_PSLS, _______,
          _______, _______, _______, _______, _______, _______, _______, KC_KP_4, KC_KP_5, KC_KP_6, KC_PAST, _______,
          _______, _______, _______, _______, _______, _______, KC_KP_0, KC_KP_1, KC_KP_2, KC_KP_3, KC_PMNS, KC_PENT,
          _______, _______, _______, _______, LOWER,   KC_PPLS, KC_PPLS, RAISE,   KC_KP_0, KC_PDOT, POK3R,   _______
@@ -112,14 +113,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------+------+------+------+------+------+------|
     * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |      |      | Home | End  |      |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |LEADER|      |      |      |      |             |      |      | CAD  |      |      |
+    * |      |      |      |      |      |             |      |      | CAD  |      |      |
     * `-----------------------------------------------------------------------------------'
     */
    [_LOWER] = LAYOUT_planck_grid(
          KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_DEL,
          KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,
          _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______, KC_HOME, KC_END,  _______,
-         KC_LEAD, _______, _______, _______, _______, _______, _______, _______, _______, RZ_CAD , _______, _______
+         _______, _______, _______, _______, _______, _______, _______, _______, _______, RZ_CAD , _______, _______
          ),
 
    /* Raise
@@ -130,14 +131,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------+------+------+------+------+------+------|
     * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |      |      |Pg Up |Pg Dn |      |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |LEADER|      |      |      |      |             |      |      | LOCK |      | FLUX |
+    * |      |      |      |      |      |             |      |      | LOCK |      | FLUX |
     * `-----------------------------------------------------------------------------------'
     */
    [_RAISE] = LAYOUT_planck_grid(
          KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,
          KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
          _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______, KC_PGUP, KC_PGDN, _______,
-         KC_LEAD, _______, _______, _______, _______, _______, _______, _______, _______, RZ_LOCK, _______, RZ_FLUX
+         _______, _______, _______, _______, _______, _______, _______, _______, _______, RZ_LOCK, _______, RZ_FLUX
          ),
 
    /* POK3R
@@ -148,32 +149,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------+------+------+------+------+------+------|
     * | SHFT |      | CUT  | COPY | PASTE|      | End  | End  |      |      |      |      |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |LEADER| Ctrl | GUI  | Alt  |      |   CONEMU    |RZMUTE|      |      |      |      |
+    * |      | Ctrl | GUI  | Alt  |      |   CONEMU    |      |      |      |      |      |
     * `-----------------------------------------------------------------------------------'
     */
    [_POK3R] = LAYOUT_planck_grid(
          RZ_TASK, KC_MSTP, KC_MPLY, KC_MPRV, KC_MPRV,  _______, KC_CALC, KC_PGDN, KC_HOME, KC_PGUP, XXXXXXX, XXXXXXX,
          KC_APP , _______, KC_MUTE, KC_VOLD, KC_VOLU,  _______, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______, _______,
          KC_LSFT, _______, KC_CUT , KC_COPY, KC_PASTE, _______, KC_END , KC_END , _______, _______, _______, _______,
-         KC_LEAD, KC_LCTL, KC_LGUI, KC_LALT, _______,  RZ_EMU,  RZ_EMU,  RZ_MUTE, _______, _______, _______, _______
+         _______, KC_LCTL, KC_LGUI, KC_LALT, _______,  RZ_EMU,  RZ_EMU,  _______, _______, _______, _______, _______
          ),
 
    /* Adjust (Lower + Raise)
     * ,-----------------------------------------------------------------------------------.
     * |      | Reset|      |      |      |      |      |      | Pause|RZMUTE| Print|  Del |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * | CAPS |      |      |Aud on|Audoff|      |      |Qwerty|Colemk|NUMPAD|Insert|      |
+    * | CAPS |CK ON |CK OFF|Aud on|Audoff|      |      |Qwerty|Colemk|NUMPAD|Insert|      |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
     * |      |CLKTGL|CLK UP|CLKDWN|CLKRST|      |      |AGNORM|AGSWAP|      |      |      |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |LEADER|      |      |      |      |    CONEMU   |      |      |      |      |      |
+    * |      |      |      |      |      |    CONEMU   |      |      |      |      |      |
     * `-----------------------------------------------------------------------------------'
     */
    [_ADJUST] = LAYOUT_planck_grid(
-         _______, RESET,   _______, _______, _______, _______, _______, _______, KC_PAUS, RZ_MUTE, KC_PSCR, KC_DEL ,
+         _______, QK_BOOT, _______, _______, _______, _______, _______, _______, KC_PAUS, RZ_MUTE, KC_PSCR, KC_DEL ,
          KC_CAPS, CK_ON,   CK_OFF,  AU_ON,   AU_OFF,  _______, _______, QWERTY,  COLEMAK, NUMPAD,  KC_INS,  _______,
          _______, CK_TOGG, CK_UP,   CK_DOWN, CK_RST,  _______, _______, AG_NORM, AG_SWAP, _______, _______, _______,
-         KC_LEAD, _______, _______, _______, _______, RZ_EMU , RZ_EMU , _______, _______, _______, _______, _______
+         _______, _______, _______, _______, _______, RZ_EMU , RZ_EMU , _______, _______, _______, _______, _______
          )
 
 };
@@ -184,87 +185,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /*default_layer_set(_COLEMAK);*/
 
-// LEADER KEY SECTION
-
-bool did_leader_succeed;
-
-#ifdef AUDIO_ENABLE
-float leader_starter[][2] = SONG(VIOLIN_SOUND);
-float leader_succeed[][2] = SONG(ONE_UP_SOUND);
-float leader_failure[][2] = SONG(MINOR_SOUND);
-#endif
-
-LEADER_EXTERNS();
-
-void matrix_scan_user(void) {
-   LEADER_DICTIONARY() {
-      did_leader_succeed = leading = false;
-
-      SEQ_ONE_KEY(KC_S) {
-         SEND_STRING(SS_DOWN(X_LCTRL) SS_DOWN(X_LSFT) SS_TAP(X_S) SS_UP(X_LSFT) SS_UP(X_LCTRL));
-         did_leader_succeed = true;
-      }
-      SEQ_ONE_KEY(KC_W) {
-         SEND_STRING(SS_LCTRL("w"));
-         did_leader_succeed = true;
-      }
-      SEQ_ONE_KEY(KC_M) {
-         SEND_STRING(SS_DOWN(X_LCTRL) SS_DOWN(X_LSFT) SS_TAP(X_M) SS_UP(X_LSFT) SS_UP(X_LCTRL));
-         did_leader_succeed = true;
-      }
-      SEQ_ONE_KEY(KC_LSFT) {
-         SEND_STRING("(");
-         did_leader_succeed = true;
-      }
-      SEQ_ONE_KEY(KC_SFTENT) {
-         SEND_STRING(")");
-         did_leader_succeed = true;
-      }
-      SEQ_ONE_KEY(KC_BSPC) {
-         SEND_STRING(SS_DOWN(X_LGUI) SS_DOWN(X_LSFT) SS_TAP(X_BSPC) SS_UP(X_LSFT) SS_UP(X_LGUI));
-         did_leader_succeed = true;
-      }
-      SEQ_TWO_KEYS(KC_LSFT, KC_SFTENT) {
-         SEND_STRING("()" SS_TAP(X_LEFT));
-         did_leader_succeed = true;
-      }
-      SEQ_TWO_KEYS(KC_Z, KC_Z) {
-         SEND_STRING(SS_DOWN(X_LGUI) SS_DOWN(X_LSFT) SS_TAP(X_Q) SS_UP(X_LSFT) SS_UP(X_LGUI));
-         did_leader_succeed = true;
-      }
-      SEQ_TWO_KEYS(KC_R, KC_R) {
-         SEND_STRING(SS_DOWN(X_LSFT) SS_TAP(X_F5) SS_UP(X_LSFT));
-         did_leader_succeed = true;
-      }
-      SEQ_TWO_KEYS(KC_V, KC_M) {
-         SEND_STRING(SS_LGUI("r") "gvim.exe\n" SS_LCTL("c"));
-         did_leader_succeed = true;
-      }
-      SEQ_TWO_KEYS(KC_Q, KC_Q) {
-         SEND_STRING(SS_DOWN(X_LALT) SS_TAP(X_F4) SS_UP(X_LALT));
-         did_leader_succeed = true;
-      }
-      leader_end();
-   }
-}
-
-void leader_start(void) {
-#ifdef AUDIO_ENABLE
-   PLAY_SONG(leader_starter);
-#endif
-}
-
-void leader_end(void) {
-   if (did_leader_succeed) {
-#ifdef AUDIO_ENABLE
-      PLAY_SONG(leader_succeed);
-#endif
-   } else {
-#ifdef AUDIO_ENABLE
-      PLAY_SONG(leader_failure);
-#endif
-   }
-}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
    switch (keycode) {
