@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------+------+------+------+------+------+------|
     * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |      | Ctrl | GUI  | Alt  |Lower |    Space    |Raise | Left | RCTL |Pok3r |Right |
+    * |  F24 | Ctrl | GUI  | Alt  |Lower |    Space    |Raise | Left | RCTL |Pok3r |Right |
     * `-----------------------------------------------------------------------------------'
     */
    [_QWERTY] = LAYOUT_planck_grid(
@@ -153,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * `-----------------------------------------------------------------------------------'
     */
    [_POK3R] = LAYOUT_planck_grid(
-         RZ_TASK, KC_MSTP, KC_MPLY, KC_MPRV, KC_MPRV,  _______, KC_CALC, KC_PGDN, KC_HOME, KC_PGUP, XXXXXXX, XXXXXXX,
+         RZ_TASK, KC_MSTP, KC_MPLY, KC_MPRV, KC_MNXT,  _______, KC_CALC, KC_PGDN, KC_HOME, KC_PGUP, XXXXXXX, XXXXXXX,
          KC_APP , _______, KC_MUTE, KC_VOLD, KC_VOLU,  _______, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______, _______,
          KC_LSFT, _______, KC_CUT , KC_COPY, KC_PASTE, _______, KC_END , KC_END , _______, _______, _______, _______,
          _______, KC_LCTL, KC_LGUI, KC_LALT, _______,  RZ_EMU,  RZ_EMU,  _______, _______, _______, _______, _______

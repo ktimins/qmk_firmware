@@ -141,7 +141,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * `-----------------------------------------+------+-----------------------------------------'
     */
    [_POK3R] = LAYOUT_all(
-     RZ_TASK, KC_MSTP, KC_MPLY, KC_MPRV, KC_MPRV,  _______,          KC_CALC, KC_PGDN, KC_HOME, KC_PGUP, XXXXXXX, XXXXXXX,
+     RZ_TASK, KC_MSTP, KC_MPLY, KC_MPRV, KC_MNXT,  _______,          KC_CALC, KC_PGDN, KC_HOME, KC_PGUP, XXXXXXX, XXXXXXX,
      KC_APP , _______, KC_MUTE, KC_VOLD, KC_VOLU,  _______, _______, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______, _______,
      KC_LSFT, _______, KC_CUT , KC_COPY, KC_PASTE, _______, _______, KC_END , KC_END , _______, _______, _______, _______,
      _______, KC_LCTL, KC_LGUI, KC_LALT, _______,  _______, _______, RZ_EMU,  _______, _______, _______, _______, _______
